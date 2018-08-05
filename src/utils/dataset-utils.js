@@ -109,6 +109,23 @@ export function createNewDataEntry({info = {}, data}, datasets = {}) {
   };
 }
 
+export function replaceDataInEntry({info = {}, data}, datasets={}) {
+  const validatedData = validateInputData(data);
+  if (!validatedData) {
+    return {};
+  }
+
+  const allData = validatedData.rows;
+
+  return {
+    [info.id] : {
+      ...datasets[info.id],
+      data: allData.slice(),
+      allData
+    }
+  };
+}
+
 export function removeSuffixAndDelimiters(layerName, suffix) {
   return layerName
     .replace(new RegExp(suffix, 'ig'), '')

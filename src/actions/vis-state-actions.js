@@ -234,3 +234,10 @@ export function loadFilesErr(error) {
     error
   };
 }
+
+export function replaceDatasetData(datasets) {
+  return {
+    type: ActionTypes.REPLACE_DATASET_DATA,
+    datasets
+  }
+}
